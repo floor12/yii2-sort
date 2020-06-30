@@ -64,8 +64,8 @@ class SortBehavior extends Behavior
      *
      * @param string $direction
      *
-     * @throws ServerErrorHttpException
      * @return boolean
+     * @throws ServerErrorHttpException
      */
     public function changeSorting($direction)
     {
@@ -111,8 +111,8 @@ class SortBehavior extends Behavior
      *
      * @param string $direction
      *
-     * @throws ServerErrorHttpException
      * @return boolean
+     * @throws ServerErrorHttpException
      */
     public function canSort($direction)
     {
@@ -165,7 +165,7 @@ class SortBehavior extends Behavior
         $s_field = $this->_sortAttribute;
 
         // Find the minimum and maximum values for the sorting table
-        $query = (new Query())->select("MIN(`$s_field`) as min_sort, MAX(`$s_field`) as max_sort")->from($owner->tableName());
+        $query = (new Query())->select("MIN({$s_field}) as min_sort, MAX({$s_field}) as max_sort")->from($owner->tableName());
         $this->_applyCustomCondition($query);
         $row = $query->one($owner->getDb());
 
